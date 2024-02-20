@@ -1,0 +1,214 @@
+@import "variables";
+@import "mixin";
+@import "extends";
+
+.container {
+  width: 85%;
+  margin: auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  background: #333;
+  .logo {
+    @extend .w_F;
+    h2 {
+      padding: 10px 0;
+      color: #dfd7c8;
+    }
+  }
+  ul {
+    @extend .w_F;
+    display: flex;
+    list-style: none;
+    padding: 5px 0;
+    li {
+      padding: 15px 10px;
+      a {
+        color: #dfd7c8;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        @include trans;
+        &:hover {
+          color: $primaryColor;
+        }
+      }
+    }
+  }
+}
+
+.home {
+  background: $Home_pg;
+  height: 100vh;
+  background-size: cover;
+  text-align: center;
+  position: relative;
+  .home-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h2 {
+      @extend .h2;
+    }
+    span {
+      @extend .span;
+    }
+    p {
+      @extend .p;
+    }
+    button {
+      @extend .button;
+    }
+  }
+}
+// need
+.need {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: $primaryColor;
+  h2 {
+    @extend .h2;
+  }
+  span {
+    @extend .span;
+    background-color: #fff;
+  }
+  p {
+    @extend .p;
+  }
+  button {
+    @extend .button;
+    background-color: $secondaryColor;
+    color: $primaryColor;
+    &:hover {
+      background-color: #ce6713;
+      color: #fff;
+      border: 1px solid;
+      border-color: #fff;
+    }
+  }
+}
+
+
+
+// service
+
+.service {
+  padding: 5rem 0;
+  background-color: #fff;
+  text-align: center;
+  h2 {
+    @extend .h2;
+    color: black;
+  }
+  span {
+    @extend .span;
+  }
+  .service-parent {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 1rem 0;
+  }
+  .item {
+    h3 {
+      margin: 1rem;
+    }
+    p {
+      color: #ac9d81;
+    }
+  }
+}
+@for $i from 1 through 4 {
+  .service-parent .fa-#{$i} {
+    color: $primaryColor;
+  }
+}
+
+// images
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 0;
+  > div {
+    position: relative;
+    img {
+      width: 100%;
+    }
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background: rgba(lighten($primaryColor, 0.5), 0.6);
+      opacity: 0;
+      @include trans;
+    }
+    &:hover {
+      .overlay {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// download
+
+.download {
+  text-align: center;
+  background: #333;
+  padding: 5rem 0;
+  h2 {
+    @extend .h2;
+  }
+  button {
+    @extend .button;
+    background-color: $secondaryColor;
+    color: #333;
+    margin: 1rem;
+    &:hover {
+      background-color: #333;
+      color: #fff;
+      border: 1px solid;
+    }
+  }
+}
+// get in touch
+
+.in-touch {
+    text-align: center;
+    padding: 3rem 0;
+    background-color: #fff;
+    h2 {
+      @extend.h2;
+      color: #333;
+    }
+    > span {
+      @extend .span;
+    }
+    .touch {
+      display: flex;
+      justify-content: center;
+      .item {
+        margin: 1rem 0.5rem;
+        i {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @import "media";
